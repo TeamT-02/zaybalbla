@@ -1,0 +1,221 @@
+{% extends 'en/base.html' %}
+{% load static %}
+{% block contant %}
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="main-banner header-text" id="top">
+        {% for i in home1 %}
+            <div style="background-image: url({{ i.images.url }})" class="Modern-Slider">
+                <!-- Item -->
+                <div style="background-image: url({{ i.images.url }})" class="item item-{{ i.number_id }}">
+                    <div style="background-image: url({{ i.images.url }})" class="img-fill">
+                        <div class="text-content">
+                            {#                        <h6></h6>#}
+                            <h4>{{ i.title }}</h4>
+                            <p>{{ i.text }}</p>
+{#                            <a href="about.html" class="filled-button">learn more</a>#}
+                        </div>
+                    </div>
+                </div>
+                <!-- // Item -->
+            </div>
+        {% endfor %}
+    </div>
+    <!-- Banner Ends Here -->
+
+    <div class="request-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4>vis loqui ad nos ?</h4>
+{#                    <span>Mauris ut dapibus velit cras interdum nisl ac urna tempor mollis.</span>#}
+                </div>
+                <div class="col-md-4">
+                    <a href="{% url 'Contact' %}" class="border-button">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>Financial <em>Product</em></h2>
+{#                        <span>Aliquam id urna imperdiet libero mollis hendrerit</span>#}
+                    </div>
+                </div>
+                {% for i in product %}
+                    <div class="col-md-4">
+                        <div class="service-item">
+                            <img src="{{ i.images.url }}" alt="">
+                            <div class="down-content">
+                                <h4>{{ i.title }}</h4>
+                                <p>{{ i.text|slice:"0:60" }}</p>
+                                <a href="{% url 'services' %}" class="filled-button">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div style="background-image: url({% static 'images/orqa.JPG' %});" class="fun-facts">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="left-content">
+                                {% for i in statistika_text %}
+                                    {#                        <span>Lorem ipsum dolor sit amet</span>#}
+                                    <h2><em>{{ i.title }}</em></h2>
+                                    <p>{{ i.text|slice:'0:70' }}<br>{{ i.text|slice:'71:141' }}<br>{{ i.text|slice:'142:213' }}<br>{{ i.text|slice:'214:284' }}<br>{{ i.text|slice:'285:356' }}
+                                    </p>
+                                    {#                        <a href="" class="filled-button">Read More</a>#}
+                                {% endfor %}
+                    </div>
+                </div>
+                <div class="col-md-6 align-self-center">
+                    <div class="row">
+                        {% for i in statistika %}
+                            <div class="col-md-6">
+                                <div class="count-area-content">
+                                    <div class="count-digit">{{ i.number }}</div>
+                                    <div class="count-title">{{ i.name }}</div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="more-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="more-info-content">
+                        <div class="row">
+                            {% for i in sher %}
+                                <div class="col-md-6">
+                                    <div class="left-image">
+                                        <img src="{{ i.image.url}}" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 align-self-center">
+                                    <div class="right-content">
+                                        {#                                    <span>Who we are</span>#}
+                                        <h2>{{ i.title }}</h2>
+                                        <p>{{ i.text|slice:'0:50' }}<br>{{ i.text|slice:'51:102' }}<br>{{ i.text|slice:'103:154'}}<br>{{ i.text|slice:'155:206' }}</p>
+                                        <a href="{% url 'about' %}" class="filled-button">Read More</a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="testimonials">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>What do they know?<em> motto</em></h2>
+                        <span>is our biggest motto</span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="owl-testimonials owl-carousel">
+                        {% for i in lon %}
+                        <div class="testimonial-item">
+                            <div class="inner-content">
+                                <h4>{{ i.full_name }}</h4>
+                                <span>{{ i.job_nmae }}</span>
+                                <p>"{{ i.text }}"</p>
+                            </div>
+                            <img src="{{ i.image.url }}" alt="">
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="callback-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>Request a <em>call back</em></h2>
+                        <span>Etiam suscipit ante a odio consequat</span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="contact-form">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input name="name" type="text" class="form-control" id="name"
+                                               placeholder="Full Name" required="">
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input name="email" type="text" class="form-control" id="email"
+                                               pattern="[^ @]*@[^ @]*" placeholder="E-Mail Address" required="">
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input name="subject" type="text" class="form-control" id="subject"
+                                               placeholder="Subject" required="">
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-12">
+                                    <fieldset>
+                                        <textarea name="message" rows="6" class="form-control" id="message"
+                                                  placeholder="Your Message" required=""></textarea>
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-12">
+                                    <fieldset>
+                                        <button type="submit" id="form-submit" class="border-button">Send Message
+                                        </button>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="partners">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="owl-partners owl-carousel">
+                        {% for i in logo %}
+                        <div class="partner-item">
+                            <img src="{{ i.images.url }}" title="1" alt="1">
+                        </div>
+                        {% endfor %}
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

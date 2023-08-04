@@ -1,0 +1,132 @@
+{% extends 'ru/include/base.html' %}
+{% load static %}
+{% block contant %}
+    <!-- Page Content -->
+    <div style="background-image: url({% static 'orqa.JPG' %}) " class="page-heading header-text">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>O Нас</h1>
+                    <span>У нас более 2 лет опыта</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="more-info about-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="more-info-content">
+                        <div class="row">
+                               {% for i in sher %}
+                                <div class="col-md-6">
+                                    <div class="left-image">
+                                        <img src="{{ i.image.url}}" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 align-self-center">
+                                    <div class="right-content">
+                                        {#                                    <span>Who we are</span>#}
+                                        <h2>{{ i.title }}</h2>
+                                        <p>{{ i.text|slice:'0:50' }}<br>{{ i.text|slice:'51:102' }}<br>{{ i.text|slice:'103:154'}}<br>{{ i.text|slice:'155:206' }}</p>
+{#                                        <a href="{% url 'about' %}" class="filled-button">Read More</a>#}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="team">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>O <em>Продукты</em></h2>
+{#                        <span>Suspendisse a ante in neque iaculis lacinia</span>#}
+                    </div>
+                </div>
+                 {% for i in team %}
+                    <div class="col-md-4">
+                        <div class="team-item">
+                            <img src="{{ i.image.url }}" alt="">
+                            <div class="down-content">
+                                <h4>{{ i.full_name }}</h4>
+                                <iframe style="width: 20.1rem" height="315" src="https://www.youtube.com/embed/BZv4z2nVg_U"
+                                        title="YouTube video player" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen></iframe>
+                                <span>{{ i.job_name }}</span>
+                                <p>{{ i.text }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div style="background-image: url({% static 'images/orqa.JPG' %});" class="fun-facts">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="left-content">
+                        {% for i in statistika_text %}
+                            {#                        <span>Lorem ipsum dolor sit amet</span>#}
+                            <h2><em>{{ i.title }}</em></h2>
+                            <p>{{ i.text|slice:'0:100' }}<br>{{ i.text|slice:'101:800' }}
+                            </p>
+                            {#                        <a href="" class="filled-button">Read More</a>#}
+                        {% endfor %}
+                    </div>
+                </div>
+                    <div class="col-md-6 align-self-center">
+                        <div class="row">
+                            {% for i in statistika %}
+                                <div class="col-md-6">
+                                    <div class="count-area-content">
+                                        <div class="count-digit">{{ i.number }}</div>
+                                        <div class="count-title">{{ i.name }}</div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonials">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-heading">
+                            <h2>O <em>Нас</em></h2>
+{#                            <span>testimonials from our greatest clients</span>#}
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="owl-testimonials owl-carousel">
+
+                            {% for i in lon %}
+                                <div class="testimonial-item">
+                                    <div class="inner-content">
+                                        <h4>{{ i.full_name }}</h4>
+                                        <span>{{ i.job_nmae }}</span>
+                                        <p>"{{ i.text }}"</p>
+                                    </div>
+                                    <img src="{{ i.image.url }}" alt="">
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
